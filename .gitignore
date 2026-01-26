@@ -1,0 +1,9 @@
+connection/
+*.log
+cache/
+tmp/
+*.bak
+*.tmp
+*.swp
+Thumbs.db
+node_modules/
