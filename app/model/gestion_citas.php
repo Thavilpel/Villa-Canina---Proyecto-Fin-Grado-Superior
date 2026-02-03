@@ -1,9 +1,10 @@
 <?php
+// ==== CONEXIÓN PDO ====
 require_once __DIR__ . '/../../connection/db_pdo.inc';
 
 class Cita {
 
-    // Obtener todas las citas con filtros opcionales
+    // ==== OBTENER TODAS LAS CITAS ====
     public static function obtenerTodas($usuario_buscar = '', $estado_cita = '', $orden_fecha = 'DESC', $servicio_id = '') {
         global $pdo;
 
@@ -41,7 +42,7 @@ class Cita {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Obtener una cita por su ID
+    // ==== OBTENER CITA POR ID ====
     public static function obtenerPorId($id) {
         global $pdo;
         $stmt = $pdo->prepare("SELECT * FROM citas WHERE id = :id");
@@ -49,7 +50,7 @@ class Cita {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Crear una nueva cita
+    // ==== CREAR CITA ====
     public static function crear($data) {
         global $pdo;
         $sql = "INSERT INTO citas (solicitud_id, fecha_hora, estado, comentario) 
@@ -63,7 +64,7 @@ class Cita {
         ]);
     }
 
-    // Editar solo fecha/hora, comentario y estado
+    //// ==== EDITAR CITAS ====
     public static function editar($id, $data) {
         global $pdo;
         $sql = "UPDATE citas 
@@ -80,7 +81,7 @@ class Cita {
         ]);
     }
 
-    // Eliminar cita y su solicitud asociada si existe
+    // // ==== ELIMINAR CITAS Y SOLICITUDES ASOCIADAS ====
     public static function eliminar($id) {
         global $pdo;
 
