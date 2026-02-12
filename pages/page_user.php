@@ -53,7 +53,7 @@ $avatar = $_SESSION['avatar'] ?? 'default.png';
         <!-- Navegación -->
         <nav>
             <ul>
-                <li><a href="#">Animales</a></li>
+                <li><a href="page_animales.php">Animales</a></li>
                 <li><a href="#">Adopciones</a></li>
                 <li><a href="page_formulario.php">Servicios</a></li>
                 <li><a href="page_donaciones.php">Donaciones</a></li>

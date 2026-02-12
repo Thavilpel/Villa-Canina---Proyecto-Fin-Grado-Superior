@@ -30,7 +30,7 @@
         <!-- Navegación -->
         <nav>
             <ul>
-                <li><a href="#">Animales</a></li>
+                <li><a href="pages/page_animales.php">Animales</a></li>
                 <li><a href="#">Adopciones</a></li>
                 <li><a href="#">Servicios</a></li>
                 <li><a href="#">Donaciones</a></li>
