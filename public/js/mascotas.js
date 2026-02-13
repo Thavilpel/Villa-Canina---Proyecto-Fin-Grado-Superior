@@ -15,7 +15,7 @@ function mostrarMascotas(lista) {
         card.className = 'col-12 col-md-6 col-lg-4 mb-3';
         card.innerHTML = `
             <div class="card h-100">
-                <img src="../img/avatar/${m.imagen || 'default.png'}" class="card-img-top" alt="${m.nombre}">
+                <img src="../public/img/mascotas/${m.imagen || 'default.png'}"
                 <div class="card-body">
                     <h5 class="card-title">${m.nombre}</h5>
                     <p class="card-text">Raza: ${m.raza || '-'}</p>

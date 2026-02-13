@@ -31,33 +31,49 @@
 
         // ==== CREAR MASCOTA ====
         if ($action === 'crear' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $nombreImagen = 'default.png';
+
+            // ==== SUBIDA DE IMAGEN ====
+            if (!empty($_FILES['imagen_file']['name'])) {
+
+                $archivo = $_FILES['imagen_file'];
+                $extension = strtolower(pathinfo($archivo['name'], PATHINFO_EXTENSION));
+                $permitidos = ['jpg','jpeg','png','webp'];
+
+                if (in_array($extension, $permitidos)) {
+
+                    $nombreImagen = uniqid('mascota_') . '.' . $extension;
+                    $rutaDestino = __DIR__ . '/../../public/img/mascotas/' . $nombreImagen;
+
+                    move_uploaded_file($archivo['tmp_name'], $rutaDestino);
+                }
+            }
+
             $datos = [
                 'nombre'      => $_POST['nombre'] ?? '',
                 'raza'        => $_POST['raza'] ?? null,
-                'genero'      => $_POST['genero'] ?? '',
+                'genero'      => $_POST['genero'] ?? 'M',
                 'edad'        => $_POST['edad'] ?? null,
                 'descripcion' => $_POST['descripcion'] ?? null,
                 'estado'      => $_POST['estado'] ?? 'disponible',
-                'imagen'      => $_POST['imagen'] ?? 'default.png',
+                'imagen'      => $nombreImagen,
                 'usuario_id'  => $_POST['usuario_id'] ?? null,
                 'fecha_adopcion' => date('Y-m-d')
             ];
 
-            if ($datos['estado'] === 'adoptado' && empty($datos['usuario_id'])) {
-                $mensaje = "⚠️ Debes seleccionar un usuario antes de marcar la mascota como adoptada.";
-            } else {
-                $ok = Mascota::crear($datos);
-                $mensaje = $ok ? "✅ Mascota creada correctamente" : "⚠️ Error al crear la mascota";
-            }
+            Mascota::crear($datos);
 
             header("Location: control_mascotas.php");
             exit;
         }
 
+
         // ==== EDITAR MASCOTA ====
-        if ($action === 'editar' && (isset($_GET['id']) || $_SERVER['REQUEST_METHOD'] === 'POST')) {
-            $id = $_POST['id'] ?? $_GET['id'];
-            $mascota = Mascota::obtenerPorId((int)$id);
+        if ($action === 'editar' && isset($_GET['id'])) {
+
+            $id = (int)$_GET['id'];
+            $mascota = Mascota::obtenerPorId($id);
 
             if (!$mascota) {
                 header("Location: control_mascotas.php");
@@ -65,6 +81,33 @@
             }
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+                $nombreImagen = $mascota['imagen'];
+
+                // ==== SI SE SUBE NUEVA IMAGEN ====
+                if (!empty($_FILES['imagen_file']['name'])) {
+
+                    $archivo = $_FILES['imagen_file'];
+                    $extension = strtolower(pathinfo($archivo['name'], PATHINFO_EXTENSION));
+                    $permitidos = ['jpg','jpeg','png','webp'];
+
+                    if (in_array($extension, $permitidos)) {
+
+                        // borrar imagen anterior si no es default
+                        if ($mascota['imagen'] !== 'default.jpg') {
+                            $rutaAnterior = __DIR__ . '/../../public/img/mascotas/' . $mascota['imagen'];
+                            if (file_exists($rutaAnterior)) {
+                                unlink($rutaAnterior);
+                            }
+                        }
+
+                        $nombreImagen = uniqid('mascota_') . '.' . $extension;
+                        $rutaDestino = __DIR__ . '/../../public/img/mascotas/' . $nombreImagen;
+
+                        move_uploaded_file($archivo['tmp_name'], $rutaDestino);
+                    }
+                }
+
                 $datos = [
                     'nombre'      => $_POST['nombre'] ?? $mascota['nombre'],
                     'raza'        => $_POST['raza'] ?? $mascota['raza'],
@@ -72,22 +115,18 @@
                     'edad'        => $_POST['edad'] ?? $mascota['edad'],
                     'descripcion' => $_POST['descripcion'] ?? $mascota['descripcion'],
                     'estado'      => $_POST['estado'] ?? $mascota['estado'],
-                    'imagen'      => $_POST['imagen'] ?? $mascota['imagen'],
-                    'usuario_id'  => $_POST['usuario_id'] ?? $mascota['usuario_id'],
+                    'imagen'      => $nombreImagen,
+                    'usuario_id'  => $_POST['usuario_id'] ?? null,
                     'fecha_adopcion' => date('Y-m-d')
                 ];
 
-                if ($datos['estado'] === 'adoptado' && empty($datos['usuario_id'])) {
-                    $mensaje = "⚠️ Debes seleccionar un usuario antes de marcar la mascota como adoptada.";
-                } else {
-                    $ok = Mascota::actualizar((int)$id, $datos);
-                    $mensaje = $ok ? "✅ Mascota actualizada correctamente" : "⚠️ Error al actualizar la mascota";
-                }
+                Mascota::actualizar($id, $datos);
 
                 header("Location: control_mascotas.php");
                 exit;
             }
         }
+
 
         // ==== ELIMINAR MASCOTA ====
         if ($action === 'eliminar' && isset($_GET['id'])) {

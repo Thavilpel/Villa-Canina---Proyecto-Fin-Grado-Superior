@@ -20,7 +20,7 @@
 
 </head>
 <body>
-    <header class="d-flex justify-content-between align-items-center flex-wrap">
+    <header>
         <!-- Logotipo -->
         <section class="logotipo">
             <img src="public/img/web/logo.png" alt="Logo">

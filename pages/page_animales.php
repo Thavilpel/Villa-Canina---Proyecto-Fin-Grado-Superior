@@ -1,26 +1,3 @@
-<?php
-session_start();
-
-// Verificamos sesión
-if (!isset($_SESSION['id'])) {
-    header("Location: ../sessions/login.php");
-    exit;
-}
-
-// Solo usuarios normales (rol = 2)
-if ($_SESSION['rol'] != 2) {
-    if ($_SESSION['rol'] == 1) {
-        header("Location: ../admin/clientes/gestion_clientes.php"); // admin
-    } else {
-        header("Location: ../sessions/login.php");
-    }
-    exit;
-}
-
-$nombre = $_SESSION['nombre'];
-$avatar = $_SESSION['avatar'] ?? 'default.png';
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,31 +20,31 @@ $avatar = $_SESSION['avatar'] ?? 'default.png';
 <body>
 
 <!-- HEADER -->
-<header class="d-flex justify-content-between align-items-center flex-wrap">
-    <section class="logotipo">
-        <img src="../public/img/web/logo.png" alt="Logo">
-        <h1>Villa Canina</h1>
-    </section>
+<header>
+        <!-- Logotipo -->
+        <section class="logotipo">
+            <img src="public/img/web/logo.png" alt="Logo">
+            <h1>Villa Canina</h1>
+        </section>
 
-    <nav>
-        <ul>
-            <li><a href="#">Animales</a></li>
-            <li><a href="#">Adopciones</a></li>
-            <li><a href="page_formulario.php">Servicios</a></li>
-            <li><a href="page_donaciones.php">Donaciones</a></li>
-            <li><a href="#">Contacto</a></li>
-            <li><a href="#">Sobre nosotros</a></li>
-        </ul>
-    </nav>
+        <!-- Navegación -->
+        <nav>
+            <ul>
+                <li><a href="pages/page_animales.php">Animales</a></li>
+                <li><a href="#">Adopciones</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Donaciones</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Sobre nosotros</a></li>
+            </ul>
+        </nav>
 
-    <section class="usuario d-flex align-items-center gap-2">
-        <div>
-            <img src="../public/img/avatar/<?= htmlspecialchars($avatar) ?>" alt="Avatar" class="rounded-circle" width="70" height="70">
-            <span><?= htmlspecialchars($nombre) ?></span>
-        </div>
-        <a href="../sessions/logout.php" class="btn btn-outline-danger btn-sm">Cerrar sesión</a>
-    </section>
-</header>
+        <!-- Registro -->
+        <section class="registro">
+            <a href="../sessions/login.php">Inicia Sesión</a>
+            <a href="../sessions/register.php">Regístrate</a>
+        </section>
+    </header>
 
 <main class="container my-5">
 

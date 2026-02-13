@@ -115,6 +115,7 @@ $nombreAdmin = $_SESSION['nombre'] ?? '';
                                 <th>Género</th>
                                 <th>Edad</th>
                                 <th>Estado</th>
+                                <th>Imagen</th>
                                 <th>Adoptado por</th>
                                 <th>Fecha adopción</th>
                                 <th>Acciones</th>
@@ -133,6 +134,10 @@ $nombreAdmin = $_SESSION['nombre'] ?? '';
                                             <span class="badge <?= $mascota['estado'] === 'adoptado' ? 'bg-danger' : 'bg-success' ?>">
                                                 <?= ucfirst($mascota['estado']) ?>
                                             </span>
+                                        </td>
+                                        <td>
+                                            <img src="../../public/img/mascotas/<?= $mascota['imagen'] ?>" 
+                                                width="60" height="60" style="object-fit:cover;">
                                         </td>
                                         <td><?= htmlspecialchars($mascota['usuario_nombre'] ?? '-') ?></td>
                                         <td><?= $mascota['fecha_adopcion'] ?? '-' ?></td>
@@ -161,7 +166,7 @@ $nombreAdmin = $_SESSION['nombre'] ?? '';
         <div class="modal fade" id="mascotaModal" tabindex="-1">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <form id="formMascota" method="POST">
+                    <form id="formMascota" method="POST" enctype="multipart/form-data">
                         <div class="modal-header">
                             <h5 class="modal-title" id="mascotaModalLabel"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -201,6 +206,10 @@ $nombreAdmin = $_SESSION['nombre'] ?? '';
                                     <option value="disponible">Disponible</option>
                                     <option value="adoptado">Adoptado</option>
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label>Imagen</label>
+                                <input type="file" name="imagen_file" class="form-control" accept="image/*">
                             </div>
                             <div class="mb-3" id="divUsuarioAdopcion" style="display:none;">
                                 <label>Usuario adoptante</label>
