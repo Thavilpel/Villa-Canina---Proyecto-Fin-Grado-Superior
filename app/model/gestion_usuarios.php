@@ -75,6 +75,48 @@
             ]);
         }
 
+        // ==== EDITAR PERFIL DEL USUARIO LOGUEADO ====
+        public static function editarPerfil($id, $datos) {
+            global $pdo;
+
+            // Preparar contraseña si se envía
+            $campos = [
+                'nombre'    => $datos['nombre'],
+                'apellidos' => $datos['apellidos'],
+                'email'     => $datos['email'],
+                'telefono'  => $datos['telefono'] ?? '',
+                'direccion' => $datos['direccion'] ?? '',
+                'ciudad'    => $datos['ciudad'] ?? '',
+                'provincia' => $datos['provincia'] ?? '',
+            ];
+
+            $sqlPartes = [];
+            $params = [];
+
+            foreach ($campos as $campo => $valor) {
+                $sqlPartes[] = "$campo = ?";
+                $params[] = $valor;
+            }
+
+            // Contraseña
+            if (!empty($datos['password'])) {
+                $sqlPartes[] = "password = ?";
+                $params[] = password_hash($datos['password'], PASSWORD_DEFAULT);
+            }
+
+            // Avatar
+            if (!empty($datos['avatar'])) {
+                $sqlPartes[] = "avatar = ?";
+                $params[] = $datos['avatar'];
+            }
+
+            $params[] = $id;
+
+            $sql = "UPDATE usuarios SET " . implode(", ", $sqlPartes) . " WHERE id = ?";
+            $stmt = $pdo->prepare($sql);
+            return $stmt->execute($params);
+        }
+
         // ==== ACTUALIZAR USUARIO ====
         public static function actualizar($id, $datos) {
             global $pdo;

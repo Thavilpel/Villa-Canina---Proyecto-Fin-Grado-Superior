@@ -54,7 +54,7 @@ if (isset($_POST['email']) && !empty($_POST['email']) &&
                     header('Location: ../pages/page_admin.php');
                     exit;
                 } elseif ($usuario['rol_id'] == 2) {
-                    header('Location: ../pages/page_user.php');
+                    header('Location: ../index.php');
                     exit;
                 } else {
                     $error = "⚠️ Rol no definido.";

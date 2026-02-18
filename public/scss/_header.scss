@@ -1,0 +1,239 @@
+@use 'sass:math';
+@use 'variables' as v;
+
+/* CABECERA */
+    header {
+        background-color: v.$color-azul;
+        padding: v.$padding-pequeno v.$padding-grande;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /*Ajustar botones en responsive*/
+        flex-wrap: wrap;
+    }
+
+    /* Seción del logotipo */
+    .logotipo {
+        display: flex;
+        align-items: center;
+        gap: v.$padding-pequeno;
+
+        img {
+            width: 64px;
+            height: 64px;
+        }
+
+        h1 {
+            font-size: v.$fuente-xxl;
+            color: v.$color-texto-claro;
+            text-shadow: 2px 2px black;
+            margin: 0;
+            font-weight: bold;
+        }
+    }
+
+    /* Menú de navegación */
+    nav {
+        ul {
+            list-style: none;
+            display: flex;
+            gap: v.$padding-medio * 0.5;
+            padding-left: 0;
+            margin: 0;
+
+            li {
+                position: relative;
+
+                a {
+                    text-decoration: none;
+                    color: v.$color-texto-claro;
+                    font-weight: bold;
+                    padding: v.$padding-pequeno * 0.5 v.$padding-pequeno;
+                    border-radius: v.$radio-bordes-pequeno;
+                    transition: all 0.3s ease;
+                    font-size: v.$fuente-grande;
+
+                    &:hover {
+                        background-color: v.$color-secundario;
+                        color: v.$color-texto-claro;
+                    }
+                }
+
+                .submenu {
+                    display: none; // oculto por defecto
+                    position: absolute; // se superpone debajo
+                    top: 110%;
+                    background-color: v.$color-secundario;
+                    width: 100%;
+                    padding-right: 10px;
+                    border-radius: 10px;
+                }
+
+                .submenu li a {
+                    color: v.$color-texto-claro;
+                    background-color: transparent;
+                    display: inline-block;
+                    font-size: v.$fuente-pequena;
+
+                    &:hover{
+                        transform: translateX(4px);
+                    }
+                }
+                
+                &:hover .submenu {
+                    display: block; // se muestra al pasar el mouse
+                }
+            }
+        }
+
+        /* Evento de girar flecha */
+        .girar{
+            display: inline-block;
+            transition: transform 0.5s ease;
+            font-size: v.$fuente-pequena;
+            margin-left: 5px;
+        }
+
+        .menu li:hover > a .girar {
+            transform: rotate(-180deg);
+        }
+
+        /* Evento seleccionar submenu */
+        .seleccionar{
+            display: none;
+        }
+
+        .submenu li a:hover .seleccionar{
+            display: inline-block;
+        }
+    }
+
+    /* Botones de registro y login */
+    .registro {
+        a {
+            text-decoration: none;
+            color: v.$color-texto-claro;
+            font-weight: bold;
+            background-color: v.$color-principal;
+            padding: math.div(v.$padding-pequeno, 2) v.$padding-pequeno;
+            border-radius: v.$radio-bordes-pequeno;
+            margin-left: 8px;
+            transition: all 0.3s ease;
+            font-size: v.$fuente-grande;
+
+            &:hover{
+                background-color: v.$color-secundario;
+            }
+        }
+    }
+
+    /* { Cuando se accede con usuario } */
+    .usuario {
+        div {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;  
+            color: white;
+            font-weight: 600;
+            font-size: 25px;
+        }
+
+        img {
+            border: 3px solid v.$user;
+            box-shadow:  2px 2px 3px v.$sombra;
+        }
+
+        img:hover{
+            box-shadow:  -2px -2px 3px v.$sombra;
+            transform: translateY(2px) scale(0.98);
+        }
+
+        .boton-cerrar{
+            background-color: v.$danger;
+            color:white;
+        }
+
+        .boton-cerrar:hover{
+            background-color: darken(v.$danger, 15%);
+        }
+    }
+
+/* ================================ */
+
+/* HEADER RESPONSIVE */
+
+/* Pantallas grandes */
+@media (max-width: 1324px) {
+    header {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: math.div(v.$padding-grande, 2);
+        
+    }
+
+    .usuario {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;  
+        gap: 5px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        text-align: center; 
+        
+        div{
+            margin-right: 0px;
+        }
+    }
+
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .registro {
+        padding: v.$padding-pequeno 0;
+    }
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 788px) {
+    header {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: v.$padding-pequeno;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    /* Quitar submenú */
+    .menu li:hover > .submenu {
+        display: none !important;
+    }
+
+    /* Quitar flecha */
+    .girar{
+        display: none !important;
+    }
+
+
+    .registro {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        a {
+        margin-left: 0;
+        }
+    }
+
+    .logotipo {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+}
