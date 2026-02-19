@@ -51,13 +51,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_perfil'])) {
     $ok = Usuario::editarPerfil($_SESSION['id'], $data);
     $mensaje = $ok ? "Perfil actualizado correctamente." : "Error al actualizar perfil.";
 
-    // Recargar datos y actualizar la sesión para el avatar
+    // Recargar datos del usuario
     $usuario = Usuario::obtenerPorId($_SESSION['id']);
+
+    // ==== ACTUALIZAR LA SESIÓN ====
+    $_SESSION['nombre'] = $usuario['nombre'];
     $_SESSION['avatar'] = $usuario['avatar'] ?? 'default.png';
 }
 
 // ==== OBTENER SOLICITUDES Y CITAS ====
-
 // Admin ve todo
 if ($_SESSION['rol'] == 1) { 
     $solicitudes = Solicitud::obtenerTodas(); 
@@ -66,6 +68,13 @@ if ($_SESSION['rol'] == 1) {
     // Usuario normal ve solo sus solicitudes y citas
     $solicitudes = Solicitud::obtenerTodas('', $usuario['nombre'] . ' ' . $usuario['apellidos']);
     $citas       = Cita::obtenerPorUsuario($usuario['id']); // NUEVO MÉTODO
+}
+
+// CANCELAR SOLICITUD
+if (isset($_POST['action']) && $_POST['action'] === 'cancelar' && isset($_POST['id'])) {
+    $solicitud_id = (int)$_POST['id'];
+    $res = Solicitud::cancelarPorUsuario($solicitud_id, $_SESSION['id']);
+    $mensaje = $res ? "✅ Solicitud cancelada correctamente." : "⚠️ No se pudo cancelar la solicitud.";
 }
 
 // ==== PASAR A VISTA ====

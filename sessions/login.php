@@ -30,7 +30,7 @@ if ($_SESSION['intentos_login'] >= $max_intentos && (time() - $_SESSION['last_at
         $password_input = $_POST['password'];
 
         // Obtener usuario por email
-        $sql = "SELECT id, nombre, email, password, rol_id, telefono FROM usuarios WHERE email = :email";
+        $sql = "SELECT id, nombre, email, password, rol_id, telefono, avatar FROM usuarios WHERE email = :email";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
@@ -59,6 +59,7 @@ if ($_SESSION['intentos_login'] >= $max_intentos && (time() - $_SESSION['last_at
                 $_SESSION['email'] = $usuario['email'];
                 $_SESSION['rol'] = $usuario['rol_id'];
                 $_SESSION['telefono'] = $usuario['telefono'] ?? '';
+                $_SESSION['avatar'] = $usuario['avatar'] ?? 'default.png';
 
                 // Resetear intentos
                 $_SESSION['intentos_login'] = 0;

@@ -113,5 +113,23 @@
                 $data['descripcion']
             ]);
         }
+
+        // ==== CANCELAR SOLICITUD USUARIO ====
+        public static function cancelarPorUsuario($solicitud_id, $usuario_id) {
+        global $pdo;
+
+        // Verificar que la solicitud pertenece al usuario
+        $stmtCheck = $pdo->prepare("SELECT id FROM solicitudes WHERE id = ? AND usuario_id = ?");
+        $stmtCheck->execute([$solicitud_id, $usuario_id]);
+        $solicitud = $stmtCheck->fetch(PDO::FETCH_ASSOC);
+
+        if (!$solicitud) {
+            return false; // La solicitud no existe o no pertenece al usuario
+        }
+
+        // Eliminar la solicitud
+        $stmt = $pdo->prepare("DELETE FROM solicitudes WHERE id = ?");
+        return $stmt->execute([$solicitud_id]);
+        }
     }
 ?>

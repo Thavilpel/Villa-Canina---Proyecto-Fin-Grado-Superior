@@ -1,0 +1,84 @@
+@use 'variables' as v;
+
+*{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+h1, h2{
+    color: v.$color-claro;
+}
+h2{
+    margin-top: 20px;
+}
+
+.perfil{
+    background-color: v.$color-secundario;
+    margin: 50px; 
+}
+
+/* PERFIL USUARIO */
+.perfil-usuario {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background: linear-gradient(135deg, v.$color-secundario, rgb(255, 236, 198));
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0,0,50,0.1);
+    padding: 10px;
+    transition: transform 0.2s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    
+
+    ul li{
+        text-align: justify;
+        font-size: v.$fuente-grande;
+        list-style: none;
+        color: v.$color-principal;
+    }
+    
+    img{
+        width: 170px;
+        border: 4px solid white;
+    }
+
+    &:hover{
+        transform: scale(1.05) rotate(-3deg);
+    }
+}
+
+.btn{
+    margin-top: 20px;
+}
+
+
+/* Tabla personalizada para solicitudes */
+.tabla-estilo{
+    border: 3px solid v.$color-principal;
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 2px 2px 4px rgba(0,0,50,0.1);
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    thead{
+        background-color: v.$color-principal;
+        color: white;
+    }
+    td, th{
+        padding: 10px 5px;
+    }
+    tbody{
+        background-color: v.$color-claro;
+    }
+
+}
+
+
+
