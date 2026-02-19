@@ -51,14 +51,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_perfil'])) {
     $ok = Usuario::editarPerfil($_SESSION['id'], $data);
     $mensaje = $ok ? "Perfil actualizado correctamente." : "Error al actualizar perfil.";
 
-    //Recargar datos y actualizar la sesión para el avatar
+    // Recargar datos y actualizar la sesión para el avatar
     $usuario = Usuario::obtenerPorId($_SESSION['id']);
     $_SESSION['avatar'] = $usuario['avatar'] ?? 'default.png';
 }
 
-// ==== OBTENER SOLICITUDES Y CITAS SOLO DEL USUARIO ====
-$solicitudes = Solicitud::obtenerTodas('', $usuario['nombre'] . ' ' . $usuario['apellidos']);
-$citas       = Cita::obtenerTodas($usuario['nombre'] . ' ' . $usuario['apellidos']);
+// ==== OBTENER SOLICITUDES Y CITAS ====
+
+// Admin ve todo
+if ($_SESSION['rol'] == 1) { 
+    $solicitudes = Solicitud::obtenerTodas(); 
+    $citas       = Cita::obtenerTodas(); 
+} else { 
+    // Usuario normal ve solo sus solicitudes y citas
+    $solicitudes = Solicitud::obtenerTodas('', $usuario['nombre'] . ' ' . $usuario['apellidos']);
+    $citas       = Cita::obtenerPorUsuario($usuario['id']); // NUEVO MÉTODO
+}
 
 // ==== PASAR A VISTA ====
 require __DIR__ . '/../view/user-profile.php';

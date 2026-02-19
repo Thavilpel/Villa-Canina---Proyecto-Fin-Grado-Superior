@@ -1,11 +1,16 @@
 <?php
     session_start();
 
-    // Verificar si hay sesión iniciada
-    if (isset($_SESSION['id'])) {
-        $nombre = $_SESSION['nombre'];
-        $avatar = $_SESSION['avatar'] ?? 'default.png';
+    // Si hay sesión y es admin, redirigirlo
+    if (isset($_SESSION['rol']) && $_SESSION['rol'] == 1) {
+        header("Location: pages/page_admin.php");
+        exit();
     }
+
+    // Si no hay sesión o es usuario normal, se muestra la página normalmente
+    $nombre = $_SESSION['nombre'] ?? null;
+    $avatar = $_SESSION['avatar'] ?? 'default.png';
+
 ?>
 
 <!DOCTYPE html>

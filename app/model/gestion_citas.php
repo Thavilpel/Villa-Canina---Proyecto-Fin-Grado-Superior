@@ -50,6 +50,26 @@ class Cita {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // ==== OBTENER CITAS DE UN USUARIO ESPECÍFICO ====
+    public static function obtenerPorUsuario($usuario_id) {
+        global $pdo;
+
+        $sql = "SELECT c.id, c.solicitud_id, u.nombre AS nombre_usuario, u.apellidos AS apellidos_usuario,
+                    u.email, u.telefono, c.fecha_hora, c.estado, c.comentario,
+                    s.servicio_id, sv.nombre AS servicio
+                FROM citas c
+                INNER JOIN solicitudes s ON c.solicitud_id = s.id
+                INNER JOIN usuarios u ON s.usuario_id = u.id
+                LEFT JOIN servicios sv ON s.servicio_id = sv.id
+                WHERE u.id = :usuario_id
+                ORDER BY c.fecha_hora DESC";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':usuario_id' => $usuario_id]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // ==== CREAR CITA ====
     public static function crear($data) {
         global $pdo;

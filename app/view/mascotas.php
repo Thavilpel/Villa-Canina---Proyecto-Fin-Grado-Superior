@@ -44,7 +44,7 @@ $nombreAdmin = $_SESSION['nombre'] ?? '';
                             <li class="nav-item mb-2"><a href="control_citas.php" class="boton-verde">Citas</a></li>
                             <li class="nav-item mb-2"><a href="control_donaciones.php" class="boton-verde">Donaciones</a></li>
                             <li class="nav-item mb-2"><a href="control_productos.php" class="boton-verde">Productos</a></li>
-                            <li class="nav-item mt-4"><a href="../sessions/logout.php" class="boton-cerrar">Cerrar sesión</a></li>
+                            <li class="nav-item mt-4"><a href="../../sessions/logout.php" class="boton-cerrar">Cerrar sesión</a></li>
                 </ul>
             </nav>
 
@@ -59,14 +59,14 @@ $nombreAdmin = $_SESSION['nombre'] ?? '';
                 </div>
                 <div class="offcanvas-body p-4">
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="../pages/page_admin.php" class="boton-verde">Inicio</a></li>
+                        <li class="nav-item mb-2"><a href="../../pages/page_admin.php" class="boton-verde">Inicio</a></li>
                         <li class="nav-item mb-2"><a href="control_usuarios.php" class="boton-verde">Usuarios</a></li>
                         <li class="nav-item mb-2"><a href="control_mascotas.php" class="boton-verde">Mascotas</a></li>
                         <li class="nav-item mb-2"><a href="control_solicitudes.php" class="boton-verde">Solicitudes</a></li>
                         <li class="nav-item mb-2"><a href="control_citas.php" class="boton-verde">Citas</a></li>
                         <li class="nav-item mb-2"><a href="control_donaciones.php" class="boton-verde">Donaciones</a></li>
                         <li class="nav-item mb-2"><a href="control_productos.php" class="boton-verde">Productos</a></li>
-                        <li class="nav-item mt-4"><a href="../sessions/logout.php" class="boton-cerrar">Cerrar sesión</a></li>
+                        <li class="nav-item mt-4"><a href="../../sessions/logout.php" class="boton-cerrar">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>
