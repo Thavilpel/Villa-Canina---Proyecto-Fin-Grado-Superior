@@ -19,7 +19,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Link CSS -->
-        <link rel="stylesheet" href="../public/css/estilo.css">
+        <link rel="stylesheet" href="../public/css/estilo_contacto.css">
 
         <!-- Link fuente -->
         <link href="https://fonts.googleapis.com/css2?family=Yrsa&display=swap" rel="stylesheet">
@@ -81,8 +81,8 @@
 
                 <!-- Registro / login -->
                 <section class="registro">
-                    <a href="sessions/login.php">Inicia Sesión</a>
-                    <a href="sessions/register.php">Regístrate</a>
+                    <a href="../sessions/login.php">Inicia Sesión</a>
+                    <a href="../sessions/register.php">Regístrate</a>
                 </section>
                 
             <?php endif; ?>
@@ -90,20 +90,21 @@
         <!-- ======== -->
         
 <!-- ================= MAIN ================= -->
-<main style="padding: 2rem; max-width: 800px; margin: auto;">
-    <h2>Contacto</h2>
+<main>
+    <section class="tarjeta-contacto">
+        <h2>Contacto</h2>
 
-    <p><strong>Email:</strong> contacto@villacanina.com</p>
-    <p><strong>Teléfono:</strong> +34 123 456 789</p>
-    <p><strong>Dirección:</strong> Calle Ficticia 123, Ciudad Ejemplo, España</p>
+        <p><strong>✉️ Email:</strong> contacto@villacanina.com</p>
+        <p><strong>📱 Teléfono:</strong> +34 123 456 789</p>
+        <p><strong>📍 Dirección:</strong> Calle Ficticia 123, Torrevieja, España</p>
+        <p><strong>🕛 Horario:</strong> LUNES A VIERNES 09:00 - 18:00. SÁBADOS Y DOMINGOS: 10:00 - 14:00</p>
 
-    <h3>Ubicación en el mapa</h3>
-    <div style="width: 100%; height: 400px; margin-top: 1rem;">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.123456789!2d-0.123456!3d40.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x123456789abcdef!2sVilla%20Canina!5e0!3m2!1ses!2ses!4v1697051234567!5m2!1ses!2ses"
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-    </div>
+        <h2>Ubicación en el mapa</h2>
+        <p>👇👇👇</p>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10576.076217169544!2d-0.6741232200621645!3d37.99378266712791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1771500672099!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
 </main>
 
         <!-- ==== PIE DE PÁGINA ==== -->

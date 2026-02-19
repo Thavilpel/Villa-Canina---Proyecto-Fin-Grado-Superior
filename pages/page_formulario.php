@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Link CSS -->
-        <link rel="stylesheet" href="../public/css/estilo.css">
+        <link rel="stylesheet" href="../public/css/estilo_formulario.css">
 
         <!-- Link fuente -->
         <link href="https://fonts.googleapis.com/css2?family=Yrsa&display=swap" rel="stylesheet">
@@ -94,8 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </ul>
                     </li>
 
-                    <li><a href="pages/page_donaciones.php"> 🛒 Tienda</a></li>
-                    <li><a href="pages/page_contacto.php"> 📱Contacto</a></li>
+                    <li><a href="page_donaciones.php"> 🛒 Tienda</a></li>
+                    <li><a href="page_contacto.php"> 📱Contacto</a></li>
                 </ul>
             </nav>
 
@@ -112,46 +112,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </header>
         <!-- ======== -->
 
-<main class="container my-5">
-    <h2 class="mb-4">Solicitar Servicio</h2>
+        <main class="container my-5">
+            <h2 class="mb-4">Solicitar Servicio</h2>
+            <p>Selecciona el servicio que quieres solicitar</p>
 
-    <?php if($mensaje): ?>
-        <div class="alert alert-info"><?= htmlspecialchars($mensaje) ?></div>
-    <?php endif; ?>
+            <?php if($mensaje): ?>
+                <div class="alert alert-info"><?= htmlspecialchars($mensaje) ?></div>
+            <?php endif; ?>
 
-    <form method="POST" class="needs-validation" novalidate>
-        <div class="mb-3">
-            <label for="email" class="form-label">Tu email:</label>
-            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email) ?>" readonly>
-        </div>
+            <form method="POST" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Tu email:</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email) ?>" readonly>
+                </div>
 
-        <div class="mb-3">
-            <label for="telefono" class="form-label">Tu teléfono:</label>
-            <input type="text" class="form-control" id="telefono" name="telefono" value="<?= htmlspecialchars($telefono) ?>" readonly>
-        </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Tu teléfono:</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" value="<?= htmlspecialchars($telefono) ?>" readonly>
+                </div>
 
-        <div class="mb-3">
-            <label for="servicio_id" class="form-label">Tipo de servicio</label>
-            <select class="form-select" id="servicio_id" name="servicio_id" required>
-                <option value="" disabled selected>Selecciona un servicio</option>
-                <?php foreach($servicios as $servicio): ?>
-                    <option value="<?= $servicio['id'] ?>"><?= htmlspecialchars($servicio['nombre']) ?></option>
-                <?php endforeach; ?>
-            </select>
-            <div class="invalid-feedback">
-                Por favor, selecciona un servicio.
-            </div>
-        </div>
+                <div class="mb-3">
+                    <label for="servicio_id" class="form-label">Tipo de servicio</label>
+                    <select class="form-select" id="servicio_id" name="servicio_id" required>
+                        <option value="" disabled selected>Selecciona un servicio</option>
+                        <?php foreach($servicios as $servicio): ?>
+                            <option value="<?= $servicio['id'] ?>"><?= htmlspecialchars($servicio['nombre']) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor, selecciona un servicio.
+                    </div>
+                </div>
 
-        <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción adicional (opcional)</label>
-            <textarea class="form-control" id="descripcion" name="descripcion" rows="4" placeholder="Agrega detalles sobre tu solicitud"></textarea>
-        </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción adicional (opcional)</label>
+                    <textarea class="form-control" id="descripcion" name="descripcion" rows="4" placeholder="Agrega detalles sobre tu solicitud"></textarea>
+                </div>
 
-        <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
-        <a href="page_perfil.php">Actualizar datos</a>
-    </form>
-</main>
+                <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                <a href="../app/controller/control_perfil.php">Actualizar datos</a>
+            </form>
+        </main>
 
         <!-- ==== PIE DE PÁGINA ==== -->
         <footer>

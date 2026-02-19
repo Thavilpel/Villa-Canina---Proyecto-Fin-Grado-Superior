@@ -2,21 +2,29 @@
 @use 'variables' as v;
 
 /* PIE DE PÁGINA */
-    footer{
-        background-color: v.$color-fondo;
-        width: 100%;
-    }
-    
-    #copy{
-        background-color: v.$color-texto;
-        color: white;
-        padding: 10px;
-    }
+footer {
+    background-color: v.$color-fondo;
+    width: 100%;
+    display: block;          
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#copy {
+    background-color: v.$color-texto;
+    color: white;
+    padding: 10px;
+    margin: 0;               // elimina márgenes extra
+    box-sizing: border-box;
+}
+
     /* Secciones del footer */
     .piePagina {
         color: v.$color-texto;
         padding: v.$padding-grande v.$padding-medio;
         font-family: v.$fuente-secundaria;
+        box-sizing: border-box;
 
         article {
             display: flex;

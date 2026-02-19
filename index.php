@@ -51,12 +51,12 @@
                     
                     <li><a href="pages/page_servicios.php">✨ Servicios <span class="girar">▼</span></a>
                         <ul class="submenu">
-                            <li><a href="pages/page_servicios.php#adopciones"><span class="seleccionar">▸</span>🐕 Adopciones</a></li>
+                            <li><a href="pages/page_formulario.php"><span class="seleccionar">▸</span>🐕 Adopciones</a></li>
                             <li><a href="pages/page_servicios.php#veterinario"><span class="seleccionar">▸</span>🏥 Veterinario</a></li>
                             <li><a href="pages/page_servicios.php#peluqueria"><span class="seleccionar">▸</span>🫧 Peluquería</a></li>
                             <li><a href="pages/page_servicios.php#alojamiento"><span class="seleccionar">▸</span>🏨 Alojamiento</a></li>
-                            <li><a href="pages/page_servicios.php#asesorar"><span class="seleccionar">▸</span>🤝 Asesorar</a></li>
-                            <li><a href="pages/page_servicios#donaciones"><span class="seleccionar">▸</span>🪙 Donaciones</a></li>
+                            <li><a href="pages/page_servicios.php#asesoramiento"><span class="seleccionar">▸</span>🤝 Asesorar</a></li>
+                            <li><a href="pages/page_donaciones.php"><span class="seleccionar">▸</span>🪙 Donaciones</a></li>
                         </ul>
                     </li>
 

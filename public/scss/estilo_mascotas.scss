@@ -1,0 +1,79 @@
+@use 'variables' as v;
+@use 'base';
+@use 'header';
+@use 'footer';
+
+/* FILTRO MASCOTAS */
+body{
+    background-image: url("../img/web/patronAnimal.jpg");
+}
+
+.filtro-mascotas{
+    background-color: v.$color-principal;
+    padding: 40px;
+    color: v.$color-claro;
+
+    .filtros, .btn{
+        background: linear-gradient(to bottom, #d3f1ff, rgba(113, 191, 236, 0.352));
+        border: 0;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.607);
+        padding: 10px;
+        width: 90%;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        text-align: center;
+        color: rgb(64, 64, 64);
+        font-weight: 500;
+    
+        &:hover{
+            transform: translateY(-5px);
+        }
+    }
+
+    .btn{
+        background: linear-gradient(to bottom, #fff3e1, rgb(215, 174, 131));
+    }
+
+    select option{
+        color: rgb(64, 64, 64);
+        background-color: white;
+    }
+
+    input.filtros::placeholder {
+        color: rgb(64, 64, 64);
+            font-weight: 500;
+        }
+}
+.boton-mostrar{
+    margin-bottom: 20px;
+}
+#btn-mostrar-mas{
+    background: linear-gradient(to bottom, #d3f1ff, rgb(113, 191, 236));
+    color: v.$color-principal;
+    border: 2px solid v.$color-principal;
+
+    &:hover{
+        transform: scale(1.1, 1.1);
+    }
+}
+
+#lista-mascotas{
+    margin: 10px;
+}
+
+.tarjeta{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.607);
+}
+
+#tarjeta{
+    transition: transform 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.607);
+    border: 4px solid rgb(215, 174, 131);
+    background-color: rgb(244, 221, 192);
+
+    &:hover{
+        transform: translateY(-5px);
+    }
+
+}

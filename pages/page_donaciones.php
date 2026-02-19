@@ -55,7 +55,7 @@ $donaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Link CSS -->
-        <link rel="stylesheet" href="../public/css/estilo.css">
+        <link rel="stylesheet" href="../public/css/estilo_formulario.css">
 
         <!-- Link fuente -->
         <link href="https://fonts.googleapis.com/css2?family=Yrsa&display=swap" rel="stylesheet">
@@ -89,8 +89,8 @@ $donaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </ul>
                     </li>
 
-                    <li><a href="pages/page_donaciones.php"> 🛒 Tienda</a></li>
-                    <li><a href="pages/page_contacto.php"> 📱Contacto</a></li>
+                    <li><a href="page_donaciones.php"> 🛒 Tienda</a></li>
+                    <li><a href="page_contacto.php"> 📱Contacto</a></li>
                 </ul>
             </nav>
 

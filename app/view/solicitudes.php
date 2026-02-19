@@ -67,7 +67,7 @@ $nombreAdmin = $_SESSION['nombre'] ?? '';
                         <li class="nav-item mb-2"><a href="control_citas.php" class="boton-verde">Citas</a></li>
                         <li class="nav-item mb-2"><a href="control_donaciones.php" class="boton-verde">Donaciones</a></li>
                         <li class="nav-item mb-2"><a href="control_productos.php" class="boton-verde">Productos</a></li>
-                        <li class="nav-item mt-4"><a href="../sessions/logout.php" class="boton-cerrar">Cerrar sesión</a></li>
+                        <li class="nav-item mt-4"><a href="../../sessions/logout.php" class="boton-cerrar">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>

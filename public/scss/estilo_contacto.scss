@@ -1,0 +1,42 @@
+@use 'variables' as v;
+@use 'base';
+@use 'header';
+@use 'footer';
+
+/* CONTACTOS */
+body{
+    background-image: url("../img/web/patronAnimal.jpg");
+}
+
+.tarjeta-contacto{
+    background-color: rgb(244, 221, 192);
+    width: 60%;
+    padding: 10px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 10px rgb(102, 84, 58);
+}
+
+h2, p {
+    color: v.$color-fondo;
+}
+p{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+h2{
+    font-weight: 700;
+    margin-top: 30px;
+}
+
+iframe{
+    width: 80%;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgb(102, 84, 58);
+    transition: transform 0.3s ease;
+    margin-top: 10px;
+
+    &:hover{
+        transform: translateY(-5px);
+    }
+}

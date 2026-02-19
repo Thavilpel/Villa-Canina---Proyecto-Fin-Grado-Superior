@@ -1,0 +1,112 @@
+@use 'variables' as v;
+@use 'base';
+@use 'header';
+@use 'footer';
+
+body {
+    font-family: 'Yrsa', serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Contenedor principal */
+main.container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Títulos */
+h2 {
+    color: #4a4a4a;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Formularios */
+form {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Inputs y textarea */
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 0.75rem 1rem;
+    transition: 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 8px rgba(255,107,107,0.3);
+    outline: none;
+}
+
+/* Botones */
+button.btn-primary {
+    background-color: #ff6b6b;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+button.btn-primary:hover {
+    background-color: #ff4757;
+}
+
+/* Enlaces */
+a {
+    color: #ff6b6b;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Mensajes */
+.alert {
+    text-align: center;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+/* ==== Email y Teléfono en la misma fila ==== */
+.row-email-tel {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.row-email-tel .form-group {
+    flex: 1 1 50%;
+}
+
+/* Etiquetas centradas en dispositivos pequeños */
+@media (max-width: 576px) {
+    .row-email-tel {
+        flex-direction: column;
+    }
+}
+
+/* Textarea */
+textarea.form-control {
+    resize: none;
+}
+
+/* Mensajes de validación */
+.invalid-feedback {
+    font-size: 0.9rem;
+    color: #ff6b6b;
+}
+
+/* Estilo general */
+.mb-3 {
+    margin-bottom: 1.5rem !important;
+}

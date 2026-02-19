@@ -19,7 +19,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Link CSS -->
-        <link rel="stylesheet" href="../public/css/estilo.css">
+        <link rel="stylesheet" href="../public/css/estilo_mascotas.css">
 
         <!-- Link fuente -->
         <link href="https://fonts.googleapis.com/css2?family=Yrsa&display=swap" rel="stylesheet">
@@ -81,48 +81,61 @@
 
                 <!-- Registro / login -->
                 <section class="registro">
-                    <a href="sessions/login.php">Inicia Sesión</a>
-                    <a href="sessions/register.php">Regístrate</a>
+                    <a href="../sessions/login.php">Inicia Sesión</a>
+                    <a href="../sessions/register.php">Regístrate</a>
                 </section>
                 
             <?php endif; ?>
+        </header>
 
-<main class="container my-5">
+        <!--  ==== CONTENIDO PRINCIPAL ==== -->
+        <main>
+            <!-- FILTROS DE ANIMALES -->
+            <section class="mb-4 filtro-mascotas">
+                <h2 class="text-center mb-3">🔎🐶 Filtrar Animales Disponibles 🐶🔍</h2>
 
-    <!-- FILTROS DE ANIMALES -->
-    <section class="mb-4">
-        <h2 class="text-center mb-3">Filtrar Animales Disponibles</h2>
-        <div class="row g-3 justify-content-center">
-            <div class="col-12 col-md-3">
-                <select id="filtro-sexo" class="form-select">
-                    <option value="">Todos los sexos</option>
-                    <option value="M">Macho</option>
-                    <option value="F">Hembra</option>
-                </select>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-12 col-md-3">
+                        <select id="filtro-sexo" class="form-select filtros">
+                            <option value="">📍 Todos los sexos</option>
+                            <option value="M">♂️Macho</option>
+                            <option value="F">♀️Hembra</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <select id="filtro-edad" class="form-select filtros">
+                            <option value="">📍 Todas las edades</option>
+                            <option value="0-1">🌕 Cachorro (0-1 año)</option>
+                            <option value="1-3">🌖 Joven (1-3 años)</option>
+                            <option value="3-7">🌘 Adulto (3-7 años)</option>
+                            <option value="7+">🌑 Mayor (7+ años)</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <input type="text" id="filtro-raza" class="form-control filtros" placeholder="📍 Buscar por raza">
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <a href="<?php echo isset($_SESSION['id']) ? 'page_formulario.php' : '../sessions/login.php'; ?>" class="btn">
+                            ♥️ Adóptame ♥️
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LISTA DE MASCOTAS -->
+            <section class="row" id="lista-mascotas">
+                <!-- Aquí se cargarán las tarjetas de animales desde main.js -->
+            </section>
+
+            <div class="text-center mt-4 boton-mostrar">
+                <button id="btn-mostrar-mas" class="btn btn-primary">
+                    Mostrar más +
+                </button>
             </div>
-
-            <div class="col-12 col-md-3">
-                <select id="filtro-edad" class="form-select">
-                    <option value="">Todas las edades</option>
-                    <option value="0-1">Cachorro (0-1 año)</option>
-                    <option value="1-3">Joven (1-3 años)</option>
-                    <option value="3-7">Adulto (3-7 años)</option>
-                    <option value="7+">Mayor (7+ años)</option>
-                </select>
-            </div>
-
-            <div class="col-12 col-md-3">
-                <input type="text" id="filtro-raza" class="form-control" placeholder="Buscar por raza">
-            </div>
-        </div>
-    </section>
-
-    <!-- LISTA DE MASCOTAS -->
-    <section class="row" id="lista-mascotas">
-        <!-- Aquí se cargarán las tarjetas de animales desde main.js -->
-    </section>
-
-</main>
+        </main>
 
 <!-- ==== PIE DE PÁGINA ==== -->
         <footer>

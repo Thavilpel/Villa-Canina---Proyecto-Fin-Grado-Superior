@@ -1,0 +1,33 @@
+@use 'variables' as v;
+@use 'base';
+@use 'header';
+@use 'footer';
+
+.hero-servicios {
+    background: linear-gradient(135deg, #f5f5f5, v.$color-principal);
+    color: v.$color-principal;
+    text-shadow: 1px 1px 1px rgb(41, 44, 59);
+}
+.lead{
+    font-weight: 500;
+}
+
+.servicio-card {
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.servicio-card:hover {
+    transform: translateY(-8px);
+}
+
+.servicio-destacado {
+    background-color: white;
+    border: 2px solid v.$color-principal;
+    transition: 0.3s;
+}
+
+.servicio-destacado:hover {
+    background-color: v.$color-principal;
+    color: white;
+}
